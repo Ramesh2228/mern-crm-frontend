@@ -1,4 +1,4 @@
-import { useState,useEffect, useContext } from "react";
+import { useState,useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 import ContactModal from "../components/ContactModal";
@@ -18,12 +18,15 @@ export default function Dashboard(){
 const [activities, setActivities] = useState([]);
 const [loading, setLoading] = useState(false);
 const { logout } = useContext(AuthContext);
-  const fetchContacts=async()=>{
-  const res = await axios.get(
-    `/contacts?page=${page}&limit=${limit}&search=${search}`
-  );    setContacts(res.data.contacts);
+  const fetchContacts = useCallback(async () => {
+  try {
+    const res = await axios.get(`/contacts?page=${page}&limit=${limit}&search=${search}`);
+    setContacts(res.data.contacts);
     setTotal(res.data.total);
-  };
+  } catch (err) {
+    console.error(err);
+  }
+}, [page, limit, search]);
 
   const fetchActivities = async () => {
   try {
@@ -36,9 +39,9 @@ const { logout } = useContext(AuthContext);
     setLoading(false);
   }
 };
-  useEffect(()=>{fetchContacts()
-  },[page,search,limit]);
-
+ useEffect(() => {
+  fetchContacts();
+}, [fetchContacts]);
   useEffect(() => {
   if (isOpen) {
     fetchActivities();
