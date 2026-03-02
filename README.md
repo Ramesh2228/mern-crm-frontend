@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# 🚀 MERN CRM Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend application for the MERN CRM project.
 
-## Available Scripts
+Built using React.js with secure authentication and a fully responsive UI.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🌐 Live Application
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+https://crm-beta-inky.vercel.app
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠 Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React.js
+- Axios
+- React Router
+- Context API
+- CSS (Responsive Design)
+- Vercel (Deployment)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🔐 Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- User Signup & Login
+- JWT Authentication
+- Automatic Token Refresh
+- Protected Routes
+- Contact CRUD Interface
+- Search & Pagination
+- Activity Logs Display
+- Logout Confirmation
+- Fully Responsive Design
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🏗 Architecture
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+React Frontend
+        ↓
+Express Backend API
+        ↓
+MongoDB Atlas
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Frontend communicates with backend via REST API.
+- Access token stored in localStorage.
+- Refresh token used to maintain session.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📦 Local Setup
 
-## Learn More
+### 1️⃣ Clone Repository
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+git clone https://github.com/Ramesh2228/mern-crm-frontend.git  
+cd mern-crm-frontend  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+### 2️⃣ Install Dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+npm install
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 3️⃣ Create Environment File
 
-### Making a Progressive Web App
+Create `.env` file:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+REACT_APP_API_URL=http://localhost:5000/api
 
-### Advanced Configuration
+For production:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+REACT_APP_API_URL=https://mern-crm-backend-jxmt.onrender.com/api
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 4️⃣ Run Application
 
-### `npm run build` fails to minify
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Production build:
+npm run build
+
+---
+
+## 🚀 Deployment
+
+Frontend is deployed on Vercel.
+
+Environment variables are configured in the Vercel dashboard.
+
+---
+
+## 🔑 Authentication Flow
+
+1. User logs in.
+2. Backend returns access + refresh tokens.
+3. Access token is used for API calls.
+4. Refresh token renews session when access token expires.
+
+---
+
+## 📄 Documentation
+
+Refer to backend repository for API documentation and Postman collection.
