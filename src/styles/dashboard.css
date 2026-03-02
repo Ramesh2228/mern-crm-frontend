@@ -50,6 +50,15 @@ body {
   border-radius: 8px;
   cursor: pointer;
 }
+.activity-btn {
+  background: #44abef;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right:8px
+}
 
 /* ===== Search ===== */
 .search {
@@ -225,4 +234,137 @@ body {
 .modal-form textarea {
   resize: none;
   min-height: 70px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 998;
+}
+
+.activity-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -4px 0 10px rgba(0,0,0,0.2);
+  z-index: 999;
+  padding: 20px;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from { right: -400px; }
+  to { right: 0; }
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.no-data {
+  text-align: center;
+  margin-top: 40px;
+  color: gray;
+}
+
+.activity-card {
+  background: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard {
+    padding: 25px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+
+  .top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .bottom-bar {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .pagination {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .modal {
+    width: 90%;
+  }
+
+  
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+
+  .dashboard {
+    padding: 15px;
+  }
+
+  .top h2 {
+    font-size: 20px;
+  }
+
+  .primary-btn,
+  .logout-btn {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .modal {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .pagination button {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+
+  .limit-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

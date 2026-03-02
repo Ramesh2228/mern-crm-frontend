@@ -88,3 +88,48 @@
   color: #ff4d4f;
   font-size: 14px;
 }
+
+@media (max-width: 768px) {
+  .auth-card {
+    width: 90%;
+    padding: 30px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+
+  .auth-container {
+    padding: 15px;
+    align-items: flex-start;
+    padding-top: 60px;
+  }
+
+  .auth-card {
+    width: 100%;
+    padding: 25px;
+    border-radius: 14px;
+  }
+
+  .auth-card h2 {
+    font-size: 20px;
+  }
+
+  .auth-card input {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .auth-card button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .auth-card a {
+    font-size: 13px;
+  }
+
+  .error {
+    font-size: 13px;
+  }
+}
