@@ -14,6 +14,9 @@ export default function Dashboard(){
   const[total,setTotal]=useState(0);
   const navigate=useNavigate();
   const [limit, setLimit] = useState(10);
+  const [isOpen, setIsOpen] = useState(false);
+const [activities, setActivities] = useState([]);
+const [loading, setLoading] = useState(false);
 const { logout } = useContext(AuthContext);
   const fetchContacts=async()=>{
   const res = await axios.get(
@@ -22,8 +25,25 @@ const { logout } = useContext(AuthContext);
     setTotal(res.data.total);
   };
 
-  useEffect(()=>{fetchContacts()},[page,search,limit]);
+  const fetchActivities = async () => {
+  try {
+    setLoading(true);
+  const res = await axios.get("/activities");
+    setActivities(res.data);
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setLoading(false);
+  }
+};
+  useEffect(()=>{fetchContacts()
+  },[page,search,limit]);
 
+  useEffect(() => {
+  if (isOpen) {
+    fetchActivities();
+  }
+}, [isOpen]);
  const handleLogout = () => {
   const confirmLogout = window.confirm(
     "Are you sure you want to logout?"
@@ -50,6 +70,9 @@ const { logout } = useContext(AuthContext);
             onClick={()=>{setEditData(null);setShowModal(true);}}>
             + Add
           </button>
+          <button onClick={() => setIsOpen(true)} className="activity-btn">
+  View Activity
+</button>
           <button className="logout-btn" onClick={handleLogout}>
             Logout
           </button>
@@ -115,6 +138,7 @@ const { logout } = useContext(AuthContext);
       )
     )}
   </div>
+ 
 </div>
       {showModal &&
         <ContactModal
@@ -122,6 +146,33 @@ const { logout } = useContext(AuthContext);
           onClose={()=>setShowModal(false)}
           refresh={fetchContacts}
         />}
+        {isOpen && (
+  <>
+    <div className="overlay" onClick={() => setIsOpen(false)}></div>
+
+    <div className="activity-panel">
+      <div className="panel-header">
+        <h3>Activity Logs</h3>
+        <button onClick={() => setIsOpen(false)}>X</button>
+      </div>
+
+      <div className="panel-body">
+        {loading ? (
+          <p>Loading...</p>
+        ) : activities.length === 0 ? (
+          <p className="no-data">No Activity Found</p>
+        ) : (
+          activities.map((item) => (
+            <div key={item._id} className="activity-card">
+              <p>{item?.message}</p>
+            </div>
+          ))
+        )}
+      </div>
     </div>
+  </>
+)}
+    </div>
+    
   );
 }
